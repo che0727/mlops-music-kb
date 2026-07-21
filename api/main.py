@@ -1,44 +1,50 @@
 # FastAPI 서버 실행
 
-from data_loader import load_music_data
-df = load_music_data()
-
-# 데이터 분석
-print("총 음악 수: ", len(df))                              # 총 음악 수
-print(df["Country"].value_counts())                         # 국가별 음악 수
-print(df["Artist"].value_counts().head())                   # 상위 5개 아티스트별 음악 수
-print(df["Vocal"].value_counts())                           # 보컬별 음악 수
-
-from collections import Counter
-
-all_tags = []
-
-for tags in df["Tags"]:
-    all_tags.extend(tags)
-
-counter = Counter(all_tags)
-print(counter.most_common(10))                              # 상위 10개 태그와 개수
-
-# 통계 출력
-print(df.head())
-print(df.info())
-print(df.isnull().sum())
-
-# LLM 호출
-from llm import recommend_tags
-
-result = recommend_tags(
-    title="View",
-    artist="SHINee",
-    memo=""
-)
-
-print(result)
-
 from fastapi import FastAPI
+from pydantic import BaseModel
+
+from .data_loader import load_music_data
+from .analysis import analyze_music_data
+from .llm import (recommend_tags, generate_music_analysis, recommend_music)
 
 app = FastAPI()
+
+
+class MusicRequest(BaseModel):
+    title: str
+    artist: str
+    memo: str = ""
+
 
 @app.get("/")
 def root():
     return {"message": "Music Knowledge Base API"}
+
+# 음악 데이터 입력 시 태그 추천
+@app.post("/recommend-tags")
+def recommend(request: MusicRequest):
+    tags = recommend_tags(
+        request.title,
+        request.artist,
+        request.memo
+    )
+
+    return {
+        "tags": tags
+        }
+
+# 사용자 음악 분석
+@app.get("/analyze")
+def analyze():
+    df = load_music_data()
+    stats = analyze_music_data(df)
+    result = generate_music_analysis(stats)
+    return {"analysis": result}
+
+# 사용자 음악 추천
+@app.get("/recommend")
+def recommend():
+    df = load_music_data()
+    stats = analyze_music_data(df)
+    recommended_music = recommend_music(stats)
+    return {"recommended_music": recommended_music}
