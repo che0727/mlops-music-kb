@@ -34,3 +34,11 @@ result = recommend_tags(
 )
 
 print(result)
+
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+def root():
+    return {"message": "Music Knowledge Base API"}
