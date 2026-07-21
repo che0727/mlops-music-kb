@@ -23,3 +23,14 @@ print(counter.most_common(10))                              # 상위 10개 태�
 print(df.head())
 print(df.info())
 print(df.isnull().sum())
+
+# LLM 호출
+from llm import recommend_tags
+
+result = recommend_tags(
+    title="View",
+    artist="SHINee",
+    memo=""
+)
+
+print(result)
