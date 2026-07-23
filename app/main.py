@@ -41,19 +41,34 @@ tags = st.text_input(
 
 if st.button("🎵 AI 태그 추천"):
 
+    if not title.strip():
+        st.warning("제목을 입력해주세요.")
+        st.stop()
+
+    if not artist.strip():
+        st.warning("아티스트를 입력해주세요.")
+        st.stop()
+
     with st.spinner("AI가 태그를 추천하는 중입니다..."):
 
-        response = requests.post(
-            "http://127.0.0.1:8000/recommend-tags",
-            json={
-                "title": title,
+        data = {"title": title,
                 "artist": artist,
-                "country": country,
-                "vocal": vocal,
-                "since": since,
-                "memo": memo
-            }
-        )
+                "memo": memo}
+                
+        try:
+            response = requests.post(
+                f"{API_URL}/recommend-tags",
+                json=data,
+                timeout=30
+            )
+
+        except requests.exceptions.ConnectionError:
+            st.error("FastAPI 서버에 연결할 수 없습니다.")
+            st.stop()
+
+        except requests.exceptions.Timeout:
+            st.error("응답 시간이 초과되었습니다.")
+            st.stop()
 
     if response.status_code == 200:
 
@@ -71,6 +86,15 @@ if st.button("🎵 AI 태그 추천"):
 
 
 if st.button("💾 데이터 저장"):
+
+    if not title.strip():
+        st.warning("제목을 입력해주세요.")
+        st.stop()
+
+    if not artist.strip():
+        st.warning("아티스트를 입력해주세요.")
+        st.stop()
+
     data = {
         "title": title,
         "artist": artist,
@@ -81,10 +105,20 @@ if st.button("💾 데이터 저장"):
         "memo": memo
     }
 
-    response = requests.post(
-        "http://127.0.0.1:8000/add-music",
-        json=data
-    )
+    try:
+        response = requests.post(
+            f"{API_URL}/add-music",
+            json=data,
+            timeout=30
+        )
+
+    except requests.exceptions.ConnectionError:
+        st.error("FastAPI 서버에 연결할 수 없습니다.")
+        st.stop()
+
+    except requests.exceptions.Timeout:
+        st.error("응답 시간이 초과되었습니다.")
+        st.stop()
 
     print(response.status_code)
     print(response.text)

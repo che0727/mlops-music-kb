@@ -1,6 +1,6 @@
 # FastAPI 서버 실행
 
-from fastapi import FastAPI
+from fastapi import (FastAPI, HTTPException)
 from pydantic import BaseModel
 
 from .data_loader import load_music_data, save_music_data
@@ -47,18 +47,35 @@ def recommend(request: MusicRequest):
 # 사용자 음악 분석
 @app.get("/analyze")
 def analyze():
-    df = load_music_data()
-    stats = analyze_music_data(df)
-    result = generate_music_analysis(stats)
-    return {"analysis": result}
+    try:
+        df = load_music_data()
+        stats = analyze_music_data(df)
+        result = generate_music_analysis(stats)
+
+        return {"analysis": result}
+
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=str(e)
+        )
 
 # 사용자 음악 추천
 @app.get("/recommend")
 def recommend_music_api():
-    df = load_music_data()
-    stats = analyze_music_data(df)
-    recommended_music = recommend_music(stats)
-    return {"recommended_music": recommended_music}
+    try:
+        df = load_music_data()
+        stats = analyze_music_data(df)
+        result = recommend_music(stats)
+
+        return {"recommend_music": result}
+
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=str(e)
+        )
+        
 
 # 음악 데이터 저장
 @app.post("/add-music")
@@ -73,9 +90,12 @@ def add_music(request: SaveMusicRequest):
         "Tags": request.tags,
         "Memo": request.memo
     }
-
-    save_music_data(new_music)
-
-    return {
-        "message": "저장 완료"
-    }
+    try:
+        save_music_data(new_music)
+        return {"message": "저장 완료"}
+    
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=str(e)
+        )
