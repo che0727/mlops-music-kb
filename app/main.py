@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 import requests
 
@@ -7,7 +8,7 @@ st.set_page_config(
     layout="centered"
 )
 
-API_URL = "http://127.0.0.1:8000"
+API_URL = os.getenv("API_URL", "http://127.0.0.1:8000")
 
 st.title("🎵 Music Recommendation System")
 st.write("나만의 음악 데이터베이스를 만들고 AI 추천을 받아보세요.")
@@ -149,17 +150,14 @@ if st.button("📊 취향 분석"):
 
 
 if st.button("🎵 음악 추천"):
+
     with st.spinner("AI가 음악을 추천하는 중입니다..."):
 
         response = requests.get(f"{API_URL}/recommend")
 
     if response.status_code == 200:
-
-        st.subheader("🎧 추천 음악")
-
-        st.write(response.json()["recommended_music"])
+        st.write(response.json()["recommend_music"])
 
     else:
-
         st.error("추천 실패")
         
