@@ -12,6 +12,7 @@ API_URL = os.getenv("API_URL", "http://127.0.0.1:8000")
 
 st.title("🎵 Music Recommendation System")
 st.write("나만의 음악 데이터베이스를 만들고 AI 추천을 받아보세요.")
+st.write("입력 데이터가 많아질 수록 더욱 정확한 맞춤 추천이 가능해집니다!")
 
 st.divider()
 st.subheader("👤 사용자")
@@ -83,6 +84,7 @@ if st.button("🎵 AI 태그 추천"):
         st.success("추천 완료!")
         st.markdown("### 🏷️ 추천 태그")
         st.info(recommended_tags)
+        st.write("마음에 드는 태그를 입력하여 저장해 보세요!")
 
     else:
 
@@ -104,6 +106,7 @@ if st.button("💾 데이터 저장"):
         st.warning("아티스트를 입력해주세요.")
         st.stop()
 
+
     data = {
         "username": username,
         "title": title,
@@ -114,7 +117,7 @@ if st.button("💾 데이터 저장"):
         "tags": tags,
         "memo": memo
     }
-
+    
     try:
         response = requests.post(
             f"{API_URL}/add-music",
@@ -135,12 +138,14 @@ if st.button("💾 데이터 저장"):
 
         result = response.json()
 
-        st.success(result["message"])
         st.info(f"현재 저장된 음악 : {result['count']}곡")
+        st.session_state.recommended_tags = []
+        st.session_state.selected_tags = []
 
     else:
         st.error(f"저장 실패 ({response.status_code})")
         st.write(response.text)
+
 
 
 st.divider()
