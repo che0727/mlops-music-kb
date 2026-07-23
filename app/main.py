@@ -14,6 +14,11 @@ st.title("🎵 Music Recommendation System")
 st.write("나만의 음악 데이터베이스를 만들고 AI 추천을 받아보세요.")
 
 st.divider()
+st.subheader("👤 사용자")
+
+username = st.text_input("닉네임을 입력하세요")
+
+st.divider()
 
 st.subheader("🎧 음악 정보 입력")
 
@@ -87,6 +92,9 @@ if st.button("🎵 AI 태그 추천"):
 
 
 if st.button("💾 데이터 저장"):
+    if not username.strip():
+        st.warning("닉네임을 입력해주세요.")
+        st.stop()
 
     if not title.strip():
         st.warning("제목을 입력해주세요.")
@@ -97,6 +105,7 @@ if st.button("💾 데이터 저장"):
         st.stop()
 
     data = {
+        "username": username,
         "title": title,
         "artist": artist,
         "country": country,
@@ -121,11 +130,14 @@ if st.button("💾 데이터 저장"):
         st.error("응답 시간이 초과되었습니다.")
         st.stop()
 
-    print(response.status_code)
-    print(response.text)
-
     if response.status_code == 200:
         st.success("저장 완료!")
+
+        result = response.json()
+
+        st.success(result["message"])
+        st.info(f"현재 저장된 음악 : {result['count']}곡")
+
     else:
         st.error(f"저장 실패 ({response.status_code})")
         st.write(response.text)
@@ -134,30 +146,43 @@ if st.button("💾 데이터 저장"):
 st.divider()
 
 if st.button("📊 취향 분석"):
+    if not username.strip():
+        st.warning("닉네임을 입력해주세요.")
+        st.stop()
+
     with st.spinner("AI가 취향을 분석하는 중입니다..."):
 
-        response = requests.get(f"{API_URL}/analyze")
+        response = requests.get(
+            f"{API_URL}/analyze",
+            params={"username": username}
+        )
 
-    if response.status_code == 200:
+        result = response.json()
 
-        st.subheader("📊 분석 결과")
-
-        st.write(response.json()["analysis"])
-
-    else:
-
-        st.error("분석 실패")
+        if "message" in result:
+            st.warning(result["message"])
+        else:
+            st.subheader("📊 분석 결과")
+            st.write(result["analysis"])
 
 
 if st.button("🎵 음악 추천"):
+    if not username.strip():
+        st.warning("닉네임을 입력해주세요.")
+        st.stop()
 
     with st.spinner("AI가 음악을 추천하는 중입니다..."):
 
-        response = requests.get(f"{API_URL}/recommend")
+        response = requests.get(
+            f"{API_URL}/recommend",
+            params={"username": username}
+        )
 
-    if response.status_code == 200:
-        st.write(response.json()["recommend_music"])
+    result = response.json()
 
+    if "message" in result:
+        st.warning(result["message"])
     else:
-        st.error("추천 실패")
+        st.subheader("🎧 AI 추천 음악")
+        st.write(result["recommend_music"])
         

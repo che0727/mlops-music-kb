@@ -16,6 +16,7 @@ class MusicRequest(BaseModel):
     memo: str = ""
 
 class SaveMusicRequest(BaseModel):
+    username: str
     title: str
     artist: str
     country: str
@@ -46,9 +47,14 @@ def recommend(request: MusicRequest):
 
 # 사용자 음악 분석
 @app.get("/analyze")
-def analyze():
+def analyze(username: str):
     try:
-        df = load_music_data()
+        df = load_music_data(username)
+        if len(df) < 3:
+            return {
+                "message": "데이터가 부족합니다. 3곡 이상 입력해주세요."
+            }
+        
         stats = analyze_music_data(df)
         result = generate_music_analysis(stats)
 
@@ -59,12 +65,18 @@ def analyze():
             status_code=500,
             detail=str(e)
         )
+    
 
 # 사용자 음악 추천
 @app.get("/recommend")
-def recommend_music_api():
+def recommend_music_api(username: str):
     try:
-        df = load_music_data()
+        df = load_music_data(username)
+        if len(df) < 3:
+            return {
+                "message": "데이터가 부족합니다. 3곡 이상 입력해주세요."
+            }
+        
         stats = analyze_music_data(df)
         result = recommend_music(stats)
 
@@ -91,8 +103,14 @@ def add_music(request: SaveMusicRequest):
         "Memo": request.memo
     }
     try:
-        save_music_data(new_music)
-        return {"message": "저장 완료"}
+        save_music_data(
+            request.username,
+            new_music
+        )
+        
+        df = load_music_data(request.username)
+
+        return {"message": "저장 완료", "count": len(df)}
     
     except Exception as e:
         raise HTTPException(
