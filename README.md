@@ -94,10 +94,12 @@ MLOps 프로젝트
 
   <img width="738" height="1300" alt="image" src="https://github.com/user-attachments/assets/86f34ae0-cc09-4421-b362-25e6cb0e10a6" />
 
-<img width="814" height="584" alt="KakaoTalk_20260723_202659171_03" src="https://github.com/user-attachments/assets/c5b78f6b-5ac2-48a4-8ee0-97e734ed9024" />
 <img width="600" height="215" alt="image" src="https://github.com/user-attachments/assets/a7bc194c-86a6-40ca-a50f-b4beaf6c0be5" />
 
-✅ 효과 - 입력 부담 감소 - 데이터 구조화 - 음악 특징 확장 📸 
+✅ 효과 
+- 입력 부담 감소
+- 데이터 구조화
+- 음악 특징 확장 📸 
  --- 
  ### 3. 음악 데이터 분석 누적 데이터를 기반으로 사용자의 취향을 분석합니다. 
  **분석 항목**
