@@ -113,7 +113,8 @@ MLOps 프로젝트
  ✅ 조건 
  - 최소 3곡 이상 데이터 필요 📸
 
-<img width="814" height="584" alt="KakaoTalk_20260723_202659171_03" src="https://github.com/user-attachments/assets/a702ce44-095a-4bed-bb7b-d02b58e8964c" />
+<img width="814" height="584" alt="image" src="https://github.com/user-attachments/assets/355bd811-c4db-4afb-9553-5ce529eb1021" />
+
 
 
   --- 
@@ -135,6 +136,7 @@ MLOps 프로젝트
 <img width="727" height="854" alt="예외처리  제목 비움-경고" src="https://github.com/user-attachments/assets/306ca4d0-f239-4d46-94da-2fa887aa79ca" />
 <img width="729" height="854" alt="예외처리  아티스트 비움 - 경고" src="https://github.com/user-attachments/assets/54b3d7fe-b507-4f35-81a7-7021e778d146" />
 <img width="743" height="145" alt="image" src="https://github.com/user-attachments/assets/17e0cdbc-5b97-4f23-aba1-adf331665806" />
+<img width="747" height="152" alt="image" src="https://github.com/user-attachments/assets/219fd88d-630f-4f3e-bdca-d4a343839f1c" />
 
    
 ## 💡 설계 철학 (차별성)
