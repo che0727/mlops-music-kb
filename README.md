@@ -92,6 +92,11 @@ MLOps 프로젝트
 **출력 예시**
 90년대 K-pop, 댄스 팝, 레트로, 사랑
 
+  <img width="738" height="1300" alt="image" src="https://github.com/user-attachments/assets/86f34ae0-cc09-4421-b362-25e6cb0e10a6" />
+
+<img width="814" height="584" alt="KakaoTalk_20260723_202659171_03" src="https://github.com/user-attachments/assets/c5b78f6b-5ac2-48a4-8ee0-97e734ed9024" />
+<img width="600" height="215" alt="image" src="https://github.com/user-attachments/assets/a7bc194c-86a6-40ca-a50f-b4beaf6c0be5" />
+
 ✅ 효과 - 입력 부담 감소 - 데이터 구조화 - 음악 특징 확장 📸 (태그 추천 결과 스크린샷
  --- 
  ### 3. 음악 데이터 분석 누적 데이터를 기반으로 사용자의 취향을 분석합니다. 
@@ -106,7 +111,10 @@ MLOps 프로젝트
  - 취향 해설 포함 
  
  ✅ 조건 
- - 최소 3곡 이상 데이터 필요 📸 (분석 결과 스크린샷)
+ - 최소 3곡 이상 데이터 필요 📸
+
+![Uploading KakaoTalk_20260723_202659171_03.png…]()
+
   --- 
   ### 4. AI 음악 추천 사용자의 데이터를 기반으로 맞춤형 음악을 추천합니다. 
   - 추천 개수: 3~5곡 
@@ -115,8 +123,9 @@ MLOps 프로젝트
   
  ✅ 특징 
   - 개인화 추천 
-  - 설명 가능한 추천 📸 (추천 결과 스크린샷)
-  
+  - 설명 가능한 추천 📸
+<img width="814" height="747" alt="KakaoTalk_20260723_202659171_02" src="https://github.com/user-attachments/assets/9f3f3036-b597-4606-955c-7c032d07d6d1" />
+
    --- 
 
 ## ❗예외처리
@@ -124,6 +133,7 @@ MLOps 프로젝트
 <img width="723" height="915" alt="예외처리  발매년도, 메모, 태그 비움 - 정상 저장" src="https://github.com/user-attachments/assets/60c905b3-4b94-4112-9ef1-66fef1224ecf" />
 <img width="727" height="854" alt="예외처리  제목 비움-경고" src="https://github.com/user-attachments/assets/306ca4d0-f239-4d46-94da-2fa887aa79ca" />
 <img width="729" height="854" alt="예외처리  아티스트 비움 - 경고" src="https://github.com/user-attachments/assets/54b3d7fe-b507-4f35-81a7-7021e778d146" />
+<img width="743" height="145" alt="image" src="https://github.com/user-attachments/assets/17e0cdbc-5b97-4f23-aba1-adf331665806" />
 
    
 ## 💡 설계 철학 (차별성)
