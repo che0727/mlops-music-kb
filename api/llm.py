@@ -18,8 +18,8 @@ if not api_key or api_key.startswith("여기에"):
 client = OpenAI(base_url=base_url, api_key=api_key)
 
 
-def recommend_tags(title, artist, memo=""):                             # 음악 정보를 받아 태그 추천
-
+# AI 태그 추천
+def recommend_tags(title, artist, memo=""):
     prompt = f"""
 다음 음악 정보를 보고
 어울리는 태그를 최대 5개 추천해 주세요.
@@ -50,8 +50,10 @@ def recommend_tags(title, artist, memo=""):                             # 음악
 
     return response.choices[0].message.content
 
+
+# AI 취향 분석
 def generate_music_analysis(stats):
-    
+
     prompt = f"""
 다음 음악 통계 데이터를 보고
 
@@ -90,6 +92,8 @@ def generate_music_analysis(stats):
     )
     return response.choices[0].message.content
 
+
+# AI 음악 추천
 def recommend_music(stats):
     prompt = f"""
 다음 통계를 보고

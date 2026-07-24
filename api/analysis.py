@@ -4,6 +4,7 @@ from collections import Counter
 
 def analyze_music_data(df):
 
+    # 태그 별 등장 횟수 Count
     all_tags = []
 
     for tags in df["Tags"]:
@@ -11,6 +12,7 @@ def analyze_music_data(df):
 
     counter = Counter(all_tags)
 
+    # 통계 수치를 하나의 딕셔너리로 취합
     analysis_result = {
         "total_music_count": len(df),
         "country_counts": df["Country"].value_counts().to_dict(),
@@ -20,4 +22,4 @@ def analyze_music_data(df):
         "top_tags": counter.most_common(10)
     }
 
-    return analysis_result                                              # 음악 데이터 분석 결과 반환
+    return analysis_result
