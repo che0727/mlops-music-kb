@@ -97,7 +97,7 @@ MLOps 프로젝트
 <img width="814" height="584" alt="KakaoTalk_20260723_202659171_03" src="https://github.com/user-attachments/assets/c5b78f6b-5ac2-48a4-8ee0-97e734ed9024" />
 <img width="600" height="215" alt="image" src="https://github.com/user-attachments/assets/a7bc194c-86a6-40ca-a50f-b4beaf6c0be5" />
 
-✅ 효과 - 입력 부담 감소 - 데이터 구조화 - 음악 특징 확장 📸 (태그 추천 결과 스크린샷
+✅ 효과 - 입력 부담 감소 - 데이터 구조화 - 음악 특징 확장 📸 
  --- 
  ### 3. 음악 데이터 분석 누적 데이터를 기반으로 사용자의 취향을 분석합니다. 
  **분석 항목**
@@ -113,7 +113,8 @@ MLOps 프로젝트
  ✅ 조건 
  - 최소 3곡 이상 데이터 필요 📸
 
-![Uploading KakaoTalk_20260723_202659171_03.png…]()
+<img width="814" height="584" alt="KakaoTalk_20260723_202659171_03" src="https://github.com/user-attachments/assets/a702ce44-095a-4bed-bb7b-d02b58e8964c" />
+
 
   --- 
   ### 4. AI 음악 추천 사용자의 데이터를 기반으로 맞춤형 음악을 추천합니다. 
