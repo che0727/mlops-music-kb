@@ -1,11 +1,9 @@
-# 🎵 Music Recommendation System  
+# 🎵 Personal Music Knowledge Base<br>: 개인 음악 지식 베이스 분석 시스템
 개인 음악 데이터 기반 AI 추천 시스템
-
----
 
 ## 📌 프로젝트 소개
 
-**Music Recommendation System**은  
+**Personal Music Knowledge Base**은  
 사용자가 직접 음악 데이터를 기록하고 관리하며,  
 AI를 통해 취향을 분석하고 새로운 음악을 추천받을 수 있는  
 **개인 맞춤형 음악 데이터베이스 시스템**입니다.
@@ -16,7 +14,25 @@ AI를 통해 취향을 분석하고 새로운 음악을 추천받을 수 있는
 
 ---
 
+## 🧐 프로젝트 추진 배경
+
+사람들은 **자신의 취향과 습관을 해석 받고, 기록하며, '나만의', '맞춤' 시스템을 만들어가는 것**에 흥미를 느낍니다.  
+이로 인해 **개인 기록 시스템**이나 다양한 형태의 **퍼스널 분석 서비스**는 꾸준히 인기를 끌어왔습니다.  
+그러나 기존의 음악 추천 서비스는 플랫폼 중심의 데이터에 의존하고 있어,  
+ - 사용자의 **주관적인 감상**이나 **개인적인 경험** 반영 불가
+ - 사용자가 **자신의 음악 취향을 직접 기록**하고 **체계적으로 분석**할 수 있는 도구 부족  
+
+과 같은 한계가 있다.  
+이에 본 프로젝트는 
+"사용자의 개인 경험 기반 음악 데이터 축적"에 초점을 두어,  
+단순 추천 시스템이 아닌 **개인화된 음악 지식 베이스 구축 시스템**을 목표로 기획되었다.
+
+---
+
 ## 🎯 프로젝트 목표
+
+> "화려한 기능보다, 어떤 상황에서도 죽지 않는  
+> **안정적인 프로그램**을 만들자"
 
 - 개인의 음악 취향을 **데이터로 축적 및 구조화**
 - LLM을 활용하여 **입력 부담 감소 및 데이터 확장**
@@ -36,14 +52,14 @@ AI를 통해 취향을 분석하고 새로운 음악을 추천받을 수 있는
 
 ## 🏗️ 시스템 아키텍처
 
-Frontend (Streamlit)
-↓
-FastAPI (Backend API Server)
-↓
-Pandas (Data Processing)
-↓
-CSV Database (User-based storage)
-↓
+Frontend (Streamlit)  
+↓  
+FastAPI (Backend API Server)  
+↓  
+Pandas (Data Processing)  
+↓  
+CSV Database (User-based storage)  
+↓  
 LLM API (Tag / Analysis / Recommendation)
 
 --- 
@@ -62,97 +78,117 @@ LLM API (Tag / Analysis / Recommendation)
 ---
 
 ## 📂 프로젝트 구조
-MLOps 프로젝트
-
-├── app
-│ └── main.py # Streamlit UI
-│
-├── api
-│ ├── main.py # FastAPI 서버
-│ ├── analysis.py # 데이터 분석 로직
-│ ├── data_loader.py # CSV 입출력
-│ └── llm.py # LLM API 호출
-│
-├── data
-│ └── *.csv # 사용자별 데이터 저장
+MLOps 프로젝트  
+├── app/  
+│ ㅤㅤ└── main.py ㅤㅤㅤㅤ# Streamlit UI  
+│  
+├── api/  
+│ ㅤㅤ├── main.py ㅤㅤㅤㅤ# FastAPI 서버  
+│ ㅤㅤ├── analysis.py ㅤㅤㅤ# 데이터 분석 로직  
+│ ㅤㅤ├── data_loader.py ㅤ # CSV 입출력  
+│ ㅤㅤ└── llm.py ㅤㅤㅤㅤㅤ# LLM API 호출  
+│  
+├── data/  
+│ ㅤㅤ└── *.csv ㅤㅤㅤㅤㅤ # 사용자별 데이터 저장 위치    
+│ ㅤㅤ└── *차하은.csv  ㅤㅤ# 샘플 데이터  
+│  
+└── README.md
 
 --- 
+
 ## 🚀 주요 기능 
 ### 1. 음악 데이터 등록
-사용자가 직접 음악 정보를 입력하여 개인 음악 데이터베이스를 구축할 수 있습니다.
+사용자가 직접 음악 정보를 입력하여 개인 음악 데이터베이스를 구축 가능
 
 **저장 항목** 
-- 제목 / 아티스트 / 국가 / 발매년도 
-- 태그 / 사용자 메모 ✅ 특징 - 개인 감상 기반 데이터 저장 - 사용자별 데이터 분리 
-- CSV 기반 경량 구조 
+- 제목 / 아티스트 / 국가 (필수 입력)
+- 발매 년도 / 태그 / 사용자 메모  (선택 입력)
+
+✅ 특징
+- 개인 감상 기반 데이터 저장 
+- 사용자별 데이터 분리 
+- CSV 기반 경량 구조  
+  
+📸 사진
+
 --- 
-### 2. AI 태그 추천 입력된 음악 정보를 기반으로 AI가 자동으로 태그를 추천합니다. 
-**입력** 
-- 제목, 아티스트, 메모 
-**출력 예시**
-90년대 K-pop, 댄스 팝, 레트로, 사랑
 
-  <img width="738" height="1300" alt="image" src="https://github.com/user-attachments/assets/86f34ae0-cc09-4421-b362-25e6cb0e10a6" />
+### 2. AI 태그 추천
+입력된 음악 정보를 기반으로 AI가 자동으로 태그를 추천 
 
-<img width="600" height="215" alt="image" src="https://github.com/user-attachments/assets/a7bc194c-86a6-40ca-a50f-b4beaf6c0be5" />
+**입력 예시** 
+- 제목, 아티스트, 국가, 보컬
+- "순정", "코요태", "한국", "혼성"  
 
-✅ 효과 
+**출력 예시**  
+- 90년대 K-pop, 댄스 팝, 레트로, 사랑
+
+✅ 효과
 - 입력 부담 감소
 - 데이터 구조화
-- 음악 특징 확장 📸 
+- 음악 특징 확장  
+
+📸 
+
  --- 
- ### 3. 음악 데이터 분석 누적 데이터를 기반으로 사용자의 취향을 분석합니다. 
+
+ ### 3. 음악 데이터 분석
+ 누적 데이터를 기반으로 사용자의 취향을 분석
+
  **분석 항목**
-  - 국가별 분포
+ - 국가별 분포
  - 아티스트 선호도
  - 주요 태그
  - 발매 시기 
  
- ✅ 특징 
+✅ 특징 
  - 자연어 기반 분석 결과 제공 
  - 취향 해설 포함 
  
  ✅ 조건 
- - 최소 3곡 이상 데이터 필요 📸
-
-<img width="814" height="584" alt="image" src="https://github.com/user-attachments/assets/355bd811-c4db-4afb-9553-5ce529eb1021" />
-
-
+ - 최소 3곡 이상 데이터 필요  
+ 
+ 📸
 
   --- 
-  ### 4. AI 음악 추천 사용자의 데이터를 기반으로 맞춤형 음악을 추천합니다. 
+  
+  ### 4. AI 음악 추천
+  사용자의 데이터를 기반으로 맞춤형 음악을 추천합니다. 
+ 
   - 추천 개수: 3~5곡 
   - 포함 내용: - 추천 이유 
   - 간단한 설명 
   
  ✅ 특징 
   - 개인화 추천 
-  - 설명 가능한 추천 📸
-<img width="814" height="747" alt="KakaoTalk_20260723_202659171_02" src="https://github.com/user-attachments/assets/9f3f3036-b597-4606-955c-7c032d07d6d1" />
+  - 설명 가능한 추천  
+ 
+  📸
 
    --- 
 
 ## ❗예외처리
-<img width="1437" height="1206" alt="예외처리" src="https://github.com/user-attachments/assets/3c4bf5b0-c2c9-4a92-af0a-8f6143a08c15" />
-<img width="723" height="915" alt="예외처리  발매년도, 메모, 태그 비움 - 정상 저장" src="https://github.com/user-attachments/assets/60c905b3-4b94-4112-9ef1-66fef1224ecf" />
-<img width="727" height="854" alt="예외처리  제목 비움-경고" src="https://github.com/user-attachments/assets/306ca4d0-f239-4d46-94da-2fa887aa79ca" />
-<img width="729" height="854" alt="예외처리  아티스트 비움 - 경고" src="https://github.com/user-attachments/assets/54b3d7fe-b507-4f35-81a7-7021e778d146" />
-<img width="743" height="145" alt="image" src="https://github.com/user-attachments/assets/17e0cdbc-5b97-4f23-aba1-adf331665806" />
-<img width="747" height="152" alt="image" src="https://github.com/user-attachments/assets/219fd88d-630f-4f3e-bdca-d4a343839f1c" />
 
+---
    
 ## 💡 설계 철학 (차별성)
 ### 1. 개인 경험 중심 데이터
 플랫폼 데이터가 아닌 사용자의 감상과 경험 기반 데이터 활용
+
  --- 
+
 ### 2. 단순하지만 안정적인 구조
  - CSV 기반 설계 
  - 명확한 데이터 흐름 
+
  --- 
+
  ### 3. 신뢰도 중심 설계 
  - 최소 데이터 조건 (3곡 이상) 
  - 입력 검증 및 예외 처리
+
   --- 
+
   ## 🛡️ 안정성 및 예외 처리
    - API 연결 실패 처리
    - Timeout 예외 처리 
@@ -160,7 +196,9 @@ MLOps 프로젝트
    - 데이터 부족 시 기능 제한 
    - CSV 파일 자동 생성 
    - Null 값 처리 👉 "기능"보다 "안정성"에 집중 
+
    --- 
+   
    ## ⚠️ 한계점 
    ### 1. 추천 정확도 
    - 기존 곡 완전 필터링 어려움 
