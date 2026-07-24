@@ -84,7 +84,7 @@ MLOps 프로젝트
 **저장 항목** 
 - 제목 / 아티스트 / 국가 / 발매년도 
 - 태그 / 사용자 메모 ✅ 특징 - 개인 감상 기반 데이터 저장 - 사용자별 데이터 분리 
-- CSV 기반 경량 구조 📸 (여기에 입력 UI 스크린샷 추가) 
+- CSV 기반 경량 구조 
 --- 
 ### 2. AI 태그 추천 입력된 음악 정보를 기반으로 AI가 자동으로 태그를 추천합니다. 
 **입력** 
@@ -118,6 +118,13 @@ MLOps 프로젝트
   - 설명 가능한 추천 📸 (추천 결과 스크린샷)
   
    --- 
+
+## ❗예외처리
+<img width="1437" height="1206" alt="예외처리" src="https://github.com/user-attachments/assets/3c4bf5b0-c2c9-4a92-af0a-8f6143a08c15" />
+<img width="723" height="915" alt="예외처리  발매년도, 메모, 태그 비움 - 정상 저장" src="https://github.com/user-attachments/assets/60c905b3-4b94-4112-9ef1-66fef1224ecf" />
+<img width="727" height="854" alt="예외처리  제목 비움-경고" src="https://github.com/user-attachments/assets/306ca4d0-f239-4d46-94da-2fa887aa79ca" />
+<img width="729" height="854" alt="예외처리  아티스트 비움 - 경고" src="https://github.com/user-attachments/assets/54b3d7fe-b507-4f35-81a7-7021e778d146" />
+
    
 ## 💡 설계 철학 (차별성)
 ### 1. 개인 경험 중심 데이터
